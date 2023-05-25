@@ -40,17 +40,17 @@ public class TokenManager {
                 .build();
     }
 
-    private Date createAccessTokenExpireTime() {
+    public Date createAccessTokenExpireTime() {
         log.info("accessTokenExpirationTime={}", accessTokenExpirationTime);
         return new Date(System.currentTimeMillis() + Long.parseLong(accessTokenExpirationTime));
     }
 
-    private Date createRefreshTokenExpireTime() {
+    public Date createRefreshTokenExpireTime() {
         log.info("refreshTokenExpirationTime={}", refreshTokenExpirationTime);
         return new Date(System.currentTimeMillis() + Long.parseLong(refreshTokenExpirationTime));
     }
 
-    private String createAccessToken(Long memberId, Role role, Date expirationTime) {
+    public String createAccessToken(Long memberId, Role role, Date expirationTime) {
         String accessToken = Jwts.builder()
                 .setSubject(TokenType.ACCESS.name())        // 토큰 제목
                 .setIssuedAt(new Date())                    // 토큰 발급 시간
@@ -63,7 +63,7 @@ public class TokenManager {
         return accessToken;
     }
 
-    private String createRefreshToken(Long memberId, Role role, Date expirationTime) {
+    public String createRefreshToken(Long memberId, Role role, Date expirationTime) {
         String refreshToken = Jwts.builder()
                 .setSubject(TokenType.REFRESH.name())        // 토큰 제목
                 .setIssuedAt(new Date())                    // 토큰 발급 시간
