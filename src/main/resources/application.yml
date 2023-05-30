@@ -24,6 +24,10 @@ spring:
     multipart:
       max-file-size: 10MB # 파일 업로드 요청시 하나의 파일 크기를 10MB 제한
       max-request-size: 100MB # 파일 업로드 요청 시 모든 파일 크기 합을 100MB 제한
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
 
 logging:
   level:
@@ -39,10 +43,13 @@ feign:
 
 kakao:
   client:
-    id: 2f16b75d6829e0ee4cc972e22e067071
-    secret: FmleCVIVxWh7KljD4G97ZwrSi2M6VxIW
+    id: ENC(HxViQ0JwZ5iXXvL6DH2j9iSkKW/RCzKxSjua7bJUBcAWmgVmZ0A8BfLgwMMo4Pjs)
+    secret: ENC(WqnR74bjH54rLB8umYZazyyq3wePku3yR4geZY6XtU7wFe+xXqH+1ngaM180UknS)
 
 token:
-  secret: and0LXRva2VuLXNlY3JldA== # 임의의 문자열
+  secret: ENC(PSNOku5BI6pnWGv3TD8iY1w9uJDaDKHQBtVdcV7fDOpP23Yx8m9uYQ==) # 임의의 문자열
   access-token-expiration-time: 900000 # 15분 1000(ms) x 60(s) x 15(m)
   refresh-token-expiration-time: 1209600000 # 2주 1000(ms) x 60 (s) x 60(m) x 24(h) x 14(d)
+
+jasypt:
+  password: ${PASSWORD}
